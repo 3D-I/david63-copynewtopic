@@ -1,0 +1,35 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_COPY_NEW_TOPIC}</h1>
+<p>{L_COPY_NEW_TOPIC_EXPLAIN}</p>
+
+<form id="cookiepolicy" method="post" action="{U_ACTION}">
+	<fieldset>
+		<legend>{L_COPY_NEW_TOPIC_OPTIONS}</legend>
+
+		<dl>
+			<dt><label for="version">{L_VERSION}{L_COLON}</label><span class="version">{COPY_NEW_TOPIC_VERSION}</span></dt>
+		</dl>
+
+		<dl>
+	    	<dt><label for="copy_topic_from_forum">{L_COPY_TOPIC_FROM_FORUM}{L_COLON}</label><br /><span>{L_COPY_TOPIC_FROM_FORUM_EXPLAIN}</span></dt>
+	    	<dd><select id="copy_topic_from_forum" name="copy_topic_from_forum">{COPY_TOPIC_FROM_FORUM}</select></dd>
+		</dl>
+
+		<dl>
+	    	<dt><label for="copy_topic_to_forum">{L_COPY_TOPIC_TO_FORUM}{L_COLON}</label><br /><span>{L_COPY_TOPIC_TO_FORUM_EXPLAIN}</span></dt>
+	    	<dd><select id="copy_topic_to_forum" name="copy_topic_to_forum">{COPY_TOPIC_TO_FORUM}</select></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{L_ACP_SUBMIT_CHANGES}</legend>
+		<p class="submit-buttons">
+			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+		</p>
+		{S_FORM_TOKEN}
+	</fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->
