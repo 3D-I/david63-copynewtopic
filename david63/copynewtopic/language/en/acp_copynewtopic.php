@@ -38,11 +38,14 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	'COPY_NEW_TOPIC_EXPLAIN'		=> 'Set the options for automatically copying a new topic from one forum to another.',
+	'COPY_TOPIC_ENABLE'				=> 'Enable automatic topic copying',
+	'COPY_TOPIC_ENABLE_EXPLAIN'		=> 'This will allow for the automatic copying of new topics posted in the “from” forum to the “to” forum.',
 	'COPY_TOPIC_FROM_FORUM'			=> 'Copy from',
 	'COPY_TOPIC_FROM_FORUM_EXPLAIN'	=> 'The forum from which you want the new topic to be copied from.',
 	'COPY_NEW_TOPIC_OPTIONS'		=> 'Options',
 	'COPY_TOPIC_TO_FORUM'			=> 'Copy to',
-	'COPY_TOPIC_TO_FORUM_EXPLAIN'	=> 'The forum to which yoy want the new topic to be copied to.',
+	'COPY_TOPIC_TO_FORUM_EXPLAIN'	=> 'The forum to which you want the new topic to be copied to.',
 
-	'FORUMS_INVALID'				=> 'The from and to forums cannot be the same.'
+	'ENABLE_INVALID'				=> 'There must be a valid entry in both the “from” and “to” forums when enabling this extension.',
+	'FORUMS_INVALID'				=> 'The “from” and “to” forums cannot be the same.',
 ));

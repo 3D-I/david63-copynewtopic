@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "Copies a new topic from a specified forum to another forum",
 	"homepage": "",
-	"version": "1.1.0",
+	"version": "1.1.0-b2",
 	"time": "2016-01-28",
 	"keywords": [
 		"phpbb",

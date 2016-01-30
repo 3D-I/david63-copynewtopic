@@ -40,4 +40,5 @@ $lang = array_merge($lang, array(
 	'COPY_NEW_TOPIC'		=> 'Copy new topic',
 	'COPY_NEW_TOPIC_LOG'	=> '<strong>Copy new topic settings updated</strong>',
 	'COPY_NEW_TOPIC_MANAGE'	=> 'Manage settings',
+	'LOG_FORA_ERROR'		=> '<strong>Copy new topic - one, or other, of the foum IDs is missing</strong>',
 ));

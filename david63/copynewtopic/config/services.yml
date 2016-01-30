@@ -2,8 +2,10 @@ services:
     david63.copynewtopic.listener:
         class: david63\copynewtopic\event\listener
         arguments:
-            - '%core.table_prefix%'		
+            - '%core.table_prefix%'
             - '@config'
+            - '@user'			
+            - '@log'
         tags:
             - { name: event.listener }
 

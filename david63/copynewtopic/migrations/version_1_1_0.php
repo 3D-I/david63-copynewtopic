@@ -14,6 +14,7 @@ class version_1_1_0 extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return array(
+			array('config.add', array('copy_topic_enable', '0')),
 			array('config.add', array('copy_topic_from_forum', '0')),
 			array('config.add', array('copy_topic_to_forum', '0')),
 

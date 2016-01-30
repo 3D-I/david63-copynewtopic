@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 */
 class admin_controller implements admin_interface
 {
-	const COPY_NEW_TOPIC_VERSION = '1.1.0';
+	const COPY_NEW_TOPIC_VERSION = '1.1.0-b2';
 
 	/** @var \phpbb\config\config */
 	protected $config;
@@ -35,6 +35,10 @@ class admin_controller implements admin_interface
 
 	/** @var string Custom form action */
 	protected $u_action;
+
+	protected $copy_enabled;
+	protected $from_forum;
+	protected $to_forum;
 
 	/**
 	* Constructor for admin controller
@@ -81,11 +85,19 @@ class admin_controller implements admin_interface
 				trigger_error($this->user->lang('FORM_INVALID') . adm_back_link($this->u_action), E_USER_WARNING);
 			}
 
-			// Check that copy to and copy from fora are not the same
-			$from_forum	= $this->request->variable('copy_topic_from_forum', 0);
-			$to_forum	= $this->request->variable('copy_topic_to_forum', 0);
+			// Let's do some error checking
+			$this->copy_enabled	= $this->request->variable('copy_topic_enable', 0);
+			$this->from_forum	= $this->request->variable('copy_topic_from_forum', 0);
+			$this->to_forum		= $this->request->variable('copy_topic_to_forum', 0);
 
-			if ($from_forum == $to_forum)
+			// Check that both fora are > 0
+			if ($this->copy_enabled && ($this->from_forum == 0 || $this->to_forum == 0))
+			{
+				trigger_error($this->user->lang('ENABLE_INVALID') . adm_back_link($this->u_action), E_USER_WARNING);
+			}
+
+			// Check that copy to and copy from fora are not the same
+			if ($this->from_forum == $this->to_forum)
 			{
 				trigger_error($this->user->lang('FORUMS_INVALID') . adm_back_link($this->u_action), E_USER_WARNING);
 			}
@@ -108,6 +120,7 @@ class admin_controller implements admin_interface
 
 		// Set output vars for display in the template
 		$this->template->assign_vars(array(
+			'COPY_NEW_TOPIC_ENABLE'		=> isset($this->config['copy_topic_enable']) ? $this->config['copy_topic_enable'] : 0,
 			'COPY_NEW_TOPIC_VERSION'	=> self::COPY_NEW_TOPIC_VERSION,
 			'COPY_TOPIC_FROM_FORUM'		=> make_forum_select($copy_from_forum, false, true, true),
 			'COPY_TOPIC_TO_FORUM'		=> make_forum_select($copy_to_forum, false, true, true),
@@ -124,7 +137,8 @@ class admin_controller implements admin_interface
 	*/
 	protected function set_options()
 	{
-		$this->config->set('copy_topic_from_forum', $from_forum);
-		$this->config->set('copy_topic_to_forum', $to_forum);
+		$this->config->set('copy_topic_enable', $this->copy_enabled);
+		$this->config->set('copy_topic_from_forum', $this->from_forum);
+		$this->config->set('copy_topic_to_forum', $this->to_forum);
 	}
 }

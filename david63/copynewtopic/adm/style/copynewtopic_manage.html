@@ -12,6 +12,12 @@
 		</dl>
 
 		<dl>
+			<dt><label for="copy_topic_enable">{L_COPY_TOPIC_ENABLE}{L_COLON}</label><br /><span>{L_COPY_TOPIC_ENABLE_EXPLAIN}</span></dt>
+			<dd><input type="radio" class="radio" name="copy_topic_enable" value="1" id="copy_topic_enable"<!-- IF COPY_NEW_TOPIC_ENABLE --> checked="checked"<!-- ENDIF -->/> {L_ENABLE}
+				<input type="radio" class="radio" name="copy_topic_enable" value="0" <!-- IF not COPY_NEW_TOPIC_ENABLE --> checked="checked"<!-- ENDIF --> /> {L_DISABLE}</dd>
+		</dl>
+
+		<dl>
 	    	<dt><label for="copy_topic_from_forum">{L_COPY_TOPIC_FROM_FORUM}{L_COLON}</label><br /><span>{L_COPY_TOPIC_FROM_FORUM_EXPLAIN}</span></dt>
 	    	<dd><select id="copy_topic_from_forum" name="copy_topic_from_forum">{COPY_TOPIC_FROM_FORUM}</select></dd>
 		</dl>
